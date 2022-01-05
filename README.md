@@ -1,9 +1,19 @@
 Portfolio replication of S&P Risk Parity.
 The replciated curve looks very similar to the actual
 S&P Risk Parity Index.
-![](result/img/comparison.png)
+
+# Comparison Graph
+![](result/img/comparison.jpg)
+
+# Correlation table
+|                        |   Replicated | S&P Risk Parity Index |   Equal Weighting |
+|:-----------------------|-------------:|----------------------:|------------------:|
+| Replicated             |         1    |                  0.99 |              0.87 |
+| S&P Risk Parity Index  |         0.99 |                     1 |              0.87 |
+| Equal Weighting        |         0.87 |                  0.87 |              1    |
 
 
+# Performance Metrics
 Performance metrics of monthly rebalancing
 
 ```plaintext
