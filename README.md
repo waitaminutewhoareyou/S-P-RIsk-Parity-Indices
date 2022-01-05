@@ -1,9 +1,11 @@
 Portfolio replication of S&P Risk Parity.
 The replciated curve looks very similar to the actual
 S&P Risk Parity Index.
-![img.png](img.png)
+![](result/img/comparison.png)
 
-Performance metrics
+
+Performance metrics of monthly rebalancing
+
 ```plaintext
 Start                        2019-01-01 00:00:00
 End                          2021-12-10 00:00:00

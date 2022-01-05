@@ -21,7 +21,7 @@ asset_spec_dir = '../data/asset_spec.csv'
 start_date = '2018-12-30'
 end_date = '2022-1-3'
 lag = 1
-OUTPUT_DIR = './BackTest/Daily Return.xlsx'
+RESULT_DIR = './result/'
 minN = 1260
 maxN = 3780
 TV = 0.05  # Target volatility
@@ -130,17 +130,15 @@ class RiskParitySP:
         ret = self.ret[start_trading_date:end_trading_date]
         rebalancing_dates = pd.date_range(self.start_date, self.end_date, freq='BM')
         effecetive_dates = rebalancing_dates.to_series().apply(lambda x: x + BMonthBegin()).apply(
-            lambda x: get_next_n_trading_days(x, 2))
+           lambda x: get_next_n_trading_days(x, 2))
 
         W = rebalancing_dates.to_series().progress_apply(self.compute_weight)
         W = W.set_index(effecetive_dates)
         W = pd.DataFrame(index=ret.index).join(W).ffill(axis=0)
 
         daily_ret = ret.multiply(W).sum(axis=1)
-        daily_ret.to_excel("daily_return.xlsx")
-        # fig, ax = plt.subplots(dpi=150)
-        # plt.plot((1 + daily_ret).cumprod())
-        # plt.show()
+        daily_ret.to_excel(RESULT_DIR + "data/daily_return.xlsx")
+
         cum_ret = (1 + daily_ret).cumprod()
         cum_ret.name = 'replicated'
         return cum_ret
