@@ -14,21 +14,38 @@ S&P Risk Parity Index.
 
 
 # Performance Metrics
-Performance metrics of monthly rebalancing
+### Monthly Rebalancing
 
 ```plaintext
-Start                        2019-01-01 00:00:00
-End                          2021-12-10 00:00:00
-Duration                      1074 days 00:00:00
-Return (Ann.) [%]                      25.341031
-Volatility (Ann.) [%]                  14.674006
-Information Ratio                       1.726933
-Final AUM [unitless]                    1.744624
-AUM Peak [$]                            1.770347
-Final Return [%]                       74.462383
-Max. Drawdown [%]                     -10.593964
-Max. Drawdown Duration         244 days 00:00:00
-Avg. Drawdown Duration          95 days 03:00:00
-Max. Underwater Duration       359 days 00:00:00
-Total Underwater Duration      613 days 00:00:00
+Start                                2012-01-04 00:00:00
+End                                  2022-01-03 00:00:00
+Duration                              3652 days 00:00:00
+Return (Ann.) [%]                               6.060919
+Volatility (Ann.) [%]                           6.524049
+Information Ratio                               0.929012
+Final AUM [unitless]                            1.844498
+AUM Peak [$]                                    1.851624
+Final Return [%]                               84.449819
+Max. Drawdown [%]                             -10.847945
+Max. Drawdown Duration                 427 days 00:00:00
+Avg. Drawdown Duration       117 days 20:52:10.434782608
+Max. Underwater Duration               463 days 00:00:00
+Total Underwater Duration             2588 days 00:00:00
+```
+### Daily Rebalancing
+```plaintext
+Start                                2012-01-04 00:00:00
+End                                  2022-01-03 00:00:00
+Duration                              3652 days 00:00:00
+Return (Ann.) [%]                              13.085124
+Volatility (Ann.) [%]                           13.71663
+Information Ratio                               0.953961
+Final AUM [unitless]                            3.594435
+AUM Peak [$]                                    3.622377
+Final Return [%]                              243.334415
+Max. Drawdown [%]                             -21.331295
+Max. Drawdown Duration                 427 days 00:00:00
+Avg. Drawdown Duration       119 days 05:13:02.608695652
+Max. Underwater Duration               463 days 00:00:00
+Total Underwater Duration             2590 days 00:00:00
 ```
