@@ -5,6 +5,13 @@ import pandas as pd
 pd.set_option('display.max_columns', 5)
 pd.set_option('display.max_rows', 60)
 
+SP_pool = [32, 28, 42, 24, 51, 80,
+           39, 31, 19, 22,
+           36, 21, 40,
+           20, 27, 35,
+           12, 14, 15,
+           11, 4, 5,  50,
+           76, 57, 64]
 
 class Dataloader:
     def __init__(self):
@@ -25,6 +32,8 @@ class Dataloader:
             if asset_ix > 137:
                 continue
 
+            if asset_ix not in SP_pool:
+                continue
             columns.append(asset_ix)
 
             cur_df = pd.read_csv(self.data_dir + csv_file,
