@@ -32,7 +32,7 @@ Avg. Drawdown Duration       117 days 20:52:10.434782608
 Max. Underwater Duration               463 days 00:00:00
 Total Underwater Duration             2588 days 00:00:00
 ```
-![](result/img/monthly_rebalancing leverage.jpg)
+![alt text](https://github.com/waitaminutewhoareyou/S-P-RIsk-Parity-Indices/blob/main/result/img/monthly_rebalancing%20leverage.jpg)
 
 ### Daily Rebalancing
 ```plaintext
@@ -52,10 +52,10 @@ Max. Underwater Duration               463 days 00:00:00
 Total Underwater Duration             2595 days 00:00:00
 dtype: object
 ```
-![](result/img/daily_rebalancing leverage.jpg)
+![alt text](https://github.com/waitaminutewhoareyou/S-P-RIsk-Parity-Indices/blob/main/result/img/daily_rebalancing%20leverage.jpg)
 ### Weekly Rebalancing
 
-![](result/img/weekly_rebalancing leverage.jpg)
+![alt text](https://github.com/waitaminutewhoareyou/S-P-RIsk-Parity-Indices/blob/main/result/img/weekly_rebalancing%20leverage.jpg)
 #### Monday
 ```plaintext
 Start                                2012-01-05 00:00:00
