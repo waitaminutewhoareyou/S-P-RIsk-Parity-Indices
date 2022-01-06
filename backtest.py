@@ -193,9 +193,9 @@ class Gross2Net:
 
 
 if __name__ == '__main__':
-    data = pd.read_excel(DATA_DIR + "weekly_rebalancing daily_return.xlsx", index_col=0, parse_dates=True, na_values=[0, '0'])
+    data = pd.read_excel(DATA_DIR + "daily_rebalancing daily_return.xlsx", index_col=0, parse_dates=True, na_values=[0, '0'])
     data = data.asfreq('B')
-    start_date, end_date = '2012-1-4', None
+    start_date, end_date = None, None
     test = BackTest(data, start_date, end_date)
     print(test.compute_stat())
 

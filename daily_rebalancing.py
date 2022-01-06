@@ -4,12 +4,13 @@ import datetime as dt
 import matplotlib.pyplot as plt
 from pandas.tseries.offsets import BMonthBegin
 from RiskParityPrimer import RiskParitySP
+from pathlib import Path
 tqdm.pandas(desc="Rebalancing")
 
 
 data_folder = '../data/'
-start_date = '2009-12-30'
-end_date = '2022-1-3'
+start_date = '2019-10-25'
+end_date = '2021-1-3'
 lag = 2
 RESULT_DIR = './result/'
 TV = 0.1  # Target volatility
@@ -17,7 +18,7 @@ TV = 0.1  # Target volatility
 
 def get_next_n_trading_days(date, n=1):
     increment = 0
-    while increment < n:
+    while increment <= n and date.isoweekday() not in [1,2,3,4,5]:
         date += dt.timedelta(days=1)
         if date.isoweekday():
             increment += 1
@@ -27,7 +28,7 @@ def get_next_n_trading_days(date, n=1):
 class Trader(RiskParitySP):
     def __init__(self, TV, start_date, end_date, lag):
         super().__init__(TV, start_date, end_date, lag)
-        self.trading_gap = 22
+        self.trading_gap = 1
         self.start_date = start_date
         self.end_date = end_date
 
@@ -52,9 +53,16 @@ class Trader(RiskParitySP):
 
 if __name__ == '__main__':
     trader = Trader(TV, start_date, end_date, lag)
-    replicated_curve = trader.trade()
+    replicated_ret = trader.trade()
 
-    actual_curve = pd.read_excel(data_folder + 'PerformanceGraphExport.xls', index_col=0)
-    actual_curve = (actual_curve.pct_change() + 1).cumprod()
-    df = pd.concat([replicated_curve, actual_curve], axis=1)
-    df.plot().legend(loc='upper left')
+    fig, ax_left = plt.subplots()
+    ax_right = ax_left.twinx()
+    ax_left.plot(replicated_ret, label='ret', color='r')
+    ax_right.scatter(trader.leverage.index, trader.leverage.values, label='leverage', color='b')
+    fig.legend(loc='upper right', bbox_to_anchor=(1,1), bbox_transform=ax_left.transAxes)
+    plt.savefig(RESULT_DIR + f'img/{Path(__file__).stem} leverage.jpg')
+
+    # actual_curve = pd.read_excel(data_folder + 'PerformanceGraphExport.xls', index_col=0)
+    # actual_curve = (actual_curve.pct_change() + 1).cumprod()
+    # df = pd.concat([replicated_ret, actual_curve], axis=1)
+    # df.plot().legend(loc='upper left')

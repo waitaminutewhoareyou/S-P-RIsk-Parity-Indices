@@ -48,6 +48,8 @@ class RiskParitySP:
         self.ac_ret = pd.DataFrame()  # asset class return will be calculated and appended later
         self.TV = TV
 
+        self.leverage = pd.Series()
+
     def compute_weight(self, date, rebalancing_gap):
 
         def compute_volatility_by_column(ret_ser: pd.Series) -> float:
@@ -107,6 +109,7 @@ class RiskParitySP:
         p_rv = p_ret.apply(compute_volatility_by_column)
         pM = (self.TV / p_rv).values[0]
 
+        self.leverage = self.leverage.append(pd.Series(pM, index=[date]))
         # Calculate weight of each futures contract
         raw_w *= pM
 
